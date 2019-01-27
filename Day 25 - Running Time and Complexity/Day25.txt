@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+import java.math.*;
+
+public class Solution {
+
+    private static final Scanner scanner = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        int[] numbers = new int[n]; 
+        for(int i=0; i<n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+        scanner.close();
+        checkPrimeNumber(n, numbers);
+    }
+    
+    static void checkPrimeNumber(int noOfTestCases, int[] input) {
+        for(int i=0; i<noOfTestCases; i++) {
+            boolean isPrimeNumber = true;
+            int number = input[i];
+            if (number<=1) {
+               isPrimeNumber = false;
+            } else {
+                for(int j=2; j<=Math.sqrt(number); j++) {
+                    if(number%j == 0) {
+                        isPrimeNumber = false;
+                        break;
+                    } 
+                }
+            }
+            if (isPrimeNumber) {
+                System.out.println("Prime");
+            } else {
+                System.out.println("Not prime");
+            }
+        }
+    }
+}
