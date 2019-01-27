@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        
+        int finePerDay = 15;
+        int finePerMonth = 500;
+        int fineAfterYear = 10000;
+        
+        int fine = 0;
+        
+        Scanner in = new Scanner(System.in);
+        
+        int returningDay = in.nextInt();
+        int returningMonth = in.nextInt();
+        int returningYear = in.nextInt();
+        
+        int dueDay = in.nextInt();
+        int dueMonth = in.nextInt();
+        int dueYear = in.nextInt();
+        
+       
+        
+        if (dueYear == returningYear) {
+            if (dueMonth == returningMonth) {
+                if (dueDay < returningDay) {
+                        fine = (returningDay - dueDay) * finePerDay;
+                } 
+            } else if (dueMonth < returningMonth) {
+                fine = (returningMonth - dueMonth) * finePerMonth;
+            }
+        } else if (dueYear < returningYear) {
+            fine = fineAfterYear;
+        }
+        System.out.println("" + fine);
+        
+    }
+}
